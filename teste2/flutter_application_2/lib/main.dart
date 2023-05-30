@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+// void main() {
+//   runApp(
+//     const MaterialApp(
+//       title: 'Meu App',
+//       home: SafeArea(
+//         child: MeuScaffold(),
+//       ),
+//     ),
+//   );
+// }
+
+void main() {
+  runApp(const MeuScaffold());
+}
+
 class MinhaAppBar extends StatelessWidget {
   const MinhaAppBar({required this.title, super.key});
 
@@ -8,13 +23,13 @@ class MinhaAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 56.0,
+        height: 100.0,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: BoxDecoration(color: Colors.blue[500]),
+        decoration: BoxDecoration(color: Colors.blue[800]),
         child: Row(children: [
           const IconButton(
               icon: Icon(Icons.menu),
-              tooltip: 'Navigation Menu',
+              tooltip: 'Navegação Menu',
               onPressed: null),
           Expanded(
             child: title,
@@ -35,7 +50,7 @@ class MeuScaffold extends StatelessWidget {
       child: Column(
         children: [
           MinhaAppBar(
-              title: Text('Exemplo titulo',
+              title: Text('Exemplo titulo 2',
                   style: Theme.of(context).primaryTextTheme.titleLarge)),
           const Expanded(
             child: Center(
@@ -46,15 +61,4 @@ class MeuScaffold extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(
-    const MaterialApp(
-      title: 'Meu App',
-      home: SafeArea(
-        child: MeuScaffold(),
-      ),
-    ),
-  );
 }
