@@ -14,7 +14,14 @@ class LoginScreen extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void userOnTap() {}
+  void onTapLogin() async {
+    print('Cliquei userOnTap!');
+    await _servico.login(usernameController.text, passwordController.text);
+  }
+
+  void userOnPressed() {
+    print('Cliquei userOnPressed!');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +77,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              EcomButton(onTap: userOnTap),
+              EcomButton(onTap: onTapLogin),
               const SizedBox(
                 height: 50,
               ),

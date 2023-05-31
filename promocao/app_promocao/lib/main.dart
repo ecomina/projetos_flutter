@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
-  //runApp(const MyApp());
-  fetch();
+  runApp(const MyApp());
+  //fetch();
 }
 
 Future fetch() async {
@@ -21,7 +21,8 @@ Future fetch() async {
   // print(response.body);
   final _servico = ApiService();
 
-  _servico.login();
+  var res = await _servico.login('erison', 'admin');
+  print('retorno: ' + res.toString());
 }
 
 class MyApp extends StatelessWidget {

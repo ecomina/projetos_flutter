@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:convert';
 
 class ApiService {
   final _storage = FlutterSecureStorage();
@@ -12,18 +13,18 @@ class ApiService {
     await _storage.write(key: 'token', value: token);
   }
 
-  Future<void> login() async {
-    var url = 'https://jsonplaceholder.typicode.com/todos/1';
-
-    var httpsUri = Uri(
-        scheme: 'https',
-        host: 'jsonplaceholder.typicode.com',
-        path: '/todos/1',
-        fragment: 'numbers');
-
-    var response = await http.get(httpsUri);
-    setToken(response.body);
-    var tk = await getToken();
-    print(tk);
+  Future<http.Response> login(String name, String password) async {
+    return http
+        .post(
+      Uri.parse('http://192.168.20.119:5022/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'name': name, 'password': password}),
+    )
+        .then((response) {
+      print('body:' + response.body);
+      return response;
+    });
   }
 }
