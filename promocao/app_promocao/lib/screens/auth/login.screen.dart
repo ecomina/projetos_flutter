@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:app_promocao/widgets/ecom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../services/api_service.dart';
 import '../../widgets/ecom_button.dart';
@@ -14,13 +17,14 @@ class LoginScreen extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void onTapLogin() async {
-    print('Cliquei userOnTap!');
+  onTapLogin() async {
+    log('Cliquei userOnTap!');
+    //GoRouter.of(context).push('/home');
     await _servico.login(usernameController.text, passwordController.text);
   }
 
   void userOnPressed() {
-    print('Cliquei userOnPressed!');
+    log('Cliquei userOnPressed!');
   }
 
   @override
@@ -77,7 +81,15 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              EcomButton(onTap: onTapLogin),
+              // EcomButton(onTap: onTapLogin()),
+              TextButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: userOnPressed(),
+                child: const Text('Meu Botão'),
+              ),
               const SizedBox(
                 height: 50,
               ),

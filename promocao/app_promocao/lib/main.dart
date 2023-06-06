@@ -1,7 +1,9 @@
-import 'package:app_promocao/screens/auth/login.screen.dart';
+import 'dart:developer';
+
+import 'package:app_promocao/routes.dart';
+//import 'package:app_promocao/screens/auth/login.screen.dart';
 import 'package:app_promocao/services/api_service.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -19,10 +21,11 @@ Future fetch() async {
 
   // var response = await http.get(httpsUri);
   // print(response.body);
-  final _servico = ApiService();
+  final servico = ApiService();
 
-  var res = await _servico.login('erison', 'admin');
-  print('retorno: ' + res.toString());
+  var res = await servico.login('erison', 'admin');
+  final String msg = res.toString();
+  log(msg);
 }
 
 class MyApp extends StatelessWidget {
@@ -31,14 +34,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Login',
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      routerDelegate: routes.routerDelegate,
+      routeInformationParser: routes.routeInformationParser,
+      routeInformationProvider: routes.routeInformationProvider,
+      //home: LoginScreen(),
     );
   }
 }

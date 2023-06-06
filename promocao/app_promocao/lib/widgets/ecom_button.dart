@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class EcomButton extends StatelessWidget {
   final Function()? onTap;
+  // final String txtCaption;
 
-  const EcomButton({
-    super.key,
-    required this.onTap,
-  });
+  const EcomButton(
+      {super.key, required this.onTap /*, required this.txtCaption*/});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class EcomButton extends StatelessWidget {
         ),
         child: const Center(
             child: Text(
-          "Entrar Agora",
+          'Entrar',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,

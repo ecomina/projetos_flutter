@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 
 class ApiService {
-  final _storage = FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage();
 
   Future<String?> getToken() async {
     return await _storage.read(key: 'token');
@@ -23,7 +25,7 @@ class ApiService {
       body: jsonEncode(<String, String>{'name': name, 'password': password}),
     )
         .then((response) {
-      print('body:' + response.body);
+      log(response.body);
       return response;
     });
   }
