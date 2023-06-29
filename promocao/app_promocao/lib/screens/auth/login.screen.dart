@@ -2,10 +2,8 @@ import 'dart:developer';
 
 import 'package:app_promocao/widgets/ecom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../services/api_service.dart';
-import '../../widgets/ecom_button.dart';
 import '../../widgets/ecom_image.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -87,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.blue),
                 ),
-                onPressed: userOnPressed(),
+                onPressed: () {}, //userOnPressed(),
                 child: const Text('Meu Botão'),
               ),
               const SizedBox(
