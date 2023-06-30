@@ -9,7 +9,7 @@ final routes = GoRouter(
     GoRoute(
       path: '/login',
       // builder: (context, state) => const LoginScreen(),
-      pageBuilder: (context, state) => MaterialPage(
+      pageBuilder: (context, state) => const MaterialPage(
         child: LoginScreen(),
         fullscreenDialog: true,
       ),

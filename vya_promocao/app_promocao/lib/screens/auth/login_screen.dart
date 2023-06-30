@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:app_promocao/services/auth_service.dart';
 import 'package:app_promocao/widgets/ecom_button.dart';
@@ -21,9 +22,47 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   Future onTapLogin(BuildContext context) async {
-    log('Cliquei userOnTap!');
-    GoRouter.of(context).push('/promocao');
-    //await authServico.login(usernameController.text, passwordController.text);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    // var duration = const Duration(seconds: 5);
+    // sleep(duration);
+
+    Future<String> result =
+        authServico.login(usernameController.text, passwordController.text);
+
+    result.then((value) => {
+          if (value.isEmpty)
+            {
+              GoRouter.of(context).push('/promocao'),
+            }
+          else
+            {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Falha no login'),
+                      content: Text(value),
+                      actions: <Widget>[
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        )
+                      ],
+                    );
+                  })
+            }
+        });
+    Navigator.of(context).pop();
   }
 
   @override

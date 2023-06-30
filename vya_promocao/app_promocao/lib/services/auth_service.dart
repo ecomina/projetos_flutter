@@ -4,17 +4,41 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {
-  final storege = const FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   Future<String?> getToken() async {
-    return await storege.read(key: 'token');
+    return await storage.read(key: 'token');
   }
 
   Future<void> setToken(String token) async {
-    await storege.write(key: 'token', value: token);
+    await storage.write(key: 'token', value: token);
   }
 
-  Future<http.Response> login(String name, String password) async {
+  Future<String> login(String name, String password) async {
+    try {
+      http.Response response = await _login(name, password);
+
+      Map<String, dynamic> jsonData = json.decode(response.body);
+
+      if (response.statusCode == 200) {
+        String token = jsonData['token'];
+        await setToken(token);
+
+        String? tk = await getToken();
+
+        log('Token: $tk');
+        return '';
+      } else {
+        String msg = jsonData['message'];
+        log('Token: $msg');
+        return msg;
+      }
+    } catch (e) {
+      return 'Erro inesperado';
+    }
+  }
+
+  Future<http.Response> _login(String name, String password) async {
     return http
         .post(
       Uri.parse('http://192.168.20.119:5022/login'),
@@ -23,8 +47,9 @@ class AuthService {
       },
       body: jsonEncode(<String, String>{'name': name, 'password': password}),
     )
-        .then((response) {
-      log(response.body);
+        .then((response) async {
+      //Map<String, dynamic> jsonData = json.decode(response.body);
+
       return response;
     });
   }
