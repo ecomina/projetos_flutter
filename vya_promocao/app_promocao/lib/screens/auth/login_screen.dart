@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:app_promocao/services/auth_service.dart';
 import 'package:app_promocao/widgets/ecom_button.dart';
 import 'package:app_promocao/widgets/ecom_textfield.dart';
@@ -40,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     result.then((value) => {
           if (value.isEmpty)
             {
-              GoRouter.of(context).push('/promocao'),
+              GoRouter.of(context).push('/main'),
             }
           else
             {
@@ -87,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 45),
+              Image.asset('assets/images/vyaonline22-mini.png'),
               const Center(
                 child: Text(
                   'Bem vindo ao VYA!',

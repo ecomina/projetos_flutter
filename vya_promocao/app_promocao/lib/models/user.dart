@@ -9,6 +9,5 @@ class User extends Equatable {
   const User(this.id, this.name, this.email, this.password);
 
   @override
-  // TODO: entender melhor esta implementação de comparar objetos com Equatable
   List<Object?> get props => [id, name, email, password];
 }
