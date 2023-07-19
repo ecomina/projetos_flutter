@@ -15,27 +15,28 @@ class AuthService {
   }
 
   Future<String> login(String name, String password) async {
-    try {
-      http.Response response = await _login(name, password);
+    return '';
+    // try {
+    //   http.Response response = await _login(name, password);
 
-      Map<String, dynamic> jsonData = json.decode(response.body);
+    //   Map<String, dynamic> jsonData = json.decode(response.body);
 
-      if (response.statusCode == 200) {
-        String token = jsonData['token'];
-        await setToken(token);
+    //   if (response.statusCode == 200) {
+    //     String token = jsonData['token'];
+    //     await setToken(token);
 
-        String? tk = await getToken();
+    //     String? tk = await getToken();
 
-        log('Token: $tk');
-        return '';
-      } else {
-        String msg = jsonData['message'];
-        log('Token: $msg');
-        return msg;
-      }
-    } catch (e) {
-      return 'Erro inesperado';
-    }
+    //     log('Token: $tk');
+    //     return '';
+    //   } else {
+    //     String msg = jsonData['message'];
+    //     log('Token: $msg');
+    //     return msg;
+    //   }
+    // } catch (e) {
+    //   return 'Erro inesperado';
+    // }
   }
 
   Future<http.Response> _login(String name, String password) async {

@@ -12,6 +12,10 @@ class EcomTextField extends StatelessWidget {
     required this.obscureText,
   });
 
+  String label() {
+    return hintText;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,16 +24,18 @@ class EcomTextField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.lightBlue),
-          ),
-          fillColor: Colors.blue,
-          filled: true,
-          hintText: hintText,
-        ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.lightBlue),
+            ),
+            fillColor: const Color.fromARGB(255, 47, 50, 53),
+            filled: true,
+            hintText: hintText,
+            labelText: label(),
+            labelStyle: const TextStyle(fontStyle: FontStyle.italic),
+            border: const UnderlineInputBorder()),
       ),
     );
   }

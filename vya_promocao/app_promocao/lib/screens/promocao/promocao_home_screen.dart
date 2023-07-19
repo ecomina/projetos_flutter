@@ -10,6 +10,13 @@ class PromocaoHomeScreen extends StatefulWidget {
 class _PromocaoHomeScreenState extends State<PromocaoHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Promoção Home'));
+    return Scaffold(
+        body: Center(
+      child: SizedBox(
+        width: 250,
+        height: 250,
+        child: Image.asset('assets/images/vyaonline22-mini.png'),
+      ),
+    ));
   }
 }

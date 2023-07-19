@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 38, 37, 39), Colors.white],
+              colors: [Colors.white, Color.fromARGB(255, 38, 37, 39)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter),
         ),
@@ -84,11 +84,14 @@ class _LoginScreenState extends State<LoginScreen> {
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 45),
-              Image.asset('assets/images/vyaonline22-mini.png'),
+              SizedBox(
+                width: 150,
+                height: 150,
+                child: Image.asset('assets/images/vyaonline22-mini.png'),
+              ),
               const Center(
                 child: Text(
-                  'Bem vindo ao VYA!',
+                  'Bem vindo!',
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.white,
@@ -98,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 25),
               EcomTextField(
                 controller: usernameController,
-                hintText: 'Nome do Usuário',
+                hintText: 'Usuário',
                 obscureText: false,
               ),
               const SizedBox(height: 25),

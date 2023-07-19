@@ -1,5 +1,5 @@
 import 'package:app_promocao/screens/auth/login_screen.dart';
-import 'package:app_promocao/screens/promocao/promocao_edicao_sreeen.dart';
+import 'package:app_promocao/screens/promocao/promocao_edicao_srceen.dart';
 import 'package:app_promocao/screens/promocao/promocao_home_screen.dart';
 import 'package:app_promocao/screens/promocao/promocao_main_screen.dart';
 import 'package:flutter/material.dart';

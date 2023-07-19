@@ -39,9 +39,11 @@ class _PromocaoMainScreenState extends State<PromocaoMainScreen> {
         },
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Center(
           child: Text('Promoções'),
         ),
+        backgroundColor: const Color.fromARGB(255, 92, 91, 91),
       ),
       body: Center(
         child: listWidget.elementAt(currentPageIndex),
@@ -62,7 +64,7 @@ class _PromocaoMainScreenState extends State<PromocaoMainScreen> {
           ),
         ],
         currentIndex: currentPageIndex,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: const Color.fromARGB(255, 92, 91, 91),
         onTap: onItemTapped,
       ),
     ));
